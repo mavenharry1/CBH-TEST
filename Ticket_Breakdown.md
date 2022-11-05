@@ -16,3 +16,13 @@ Based on the information given, break this ticket down into 2-5 individual ticke
 You will be graded on the level of detail in each ticket, the clarity of the execution plan within and between tickets, and the intelligibility of your language. You don't need to be a native English speaker, but please proof-read your work.
 
 ## Your Breakdown Here
+
+Ticket 1: Create a new table `customIds` with fields: `facility_id`, `agent_id`, `custom_id` as foriegn keys mapped to the primary key of `facilities`, `agents` tables respective.
+
+Ticket 2: Create a function maybe `setAgentCustomId`, this should update the `customIds` table with the required fields indentifing the agent, facility and the facility prefered `custom_id`.
+
+TIcket 3: Update the `getShiftsByFacility` function to check if an agent from the returned shifts exits in the `customIds` table for a specific facility. This can be done using JOIN for SQL or Aggregate/lookup for MongoDB esily. If it does exist replace the internal `_id` in the agent metadata with the found `custom_id` else return the internal `_id`.
+
+NB: Old/already exisitng agents for a facility can be added to the new `customIds` table by updateing the function responsible for creating new agents or editing aagents for a particular facility.
+
+DS: Proper test to make sure every function tied to edited functions must be done to make sure nothing breaks and proper peer reviews and unit/integration tests helps here too.
