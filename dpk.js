@@ -6,11 +6,11 @@ exports.deterministicPartitionKey = (event) => {
   let FINAL_PARTITION_KEY = INITIAL_PARTITION_KEY
 
   if (event) {
-    if (event.partitionKey) {
-      FINAL_PARTITION_KEY = event.partitionKey;
-    } else {
-      return FINAL_PARTITION_KEY = this.generateHash(event)
+    if (!event.partitionKey) {
+      return this.generateHash(event)
     }
+
+    FINAL_PARTITION_KEY = event.partitionKey;
   }
 
   if (FINAL_PARTITION_KEY?.length > MAX_PARTITION_KEY_LENGTH) {

@@ -10,8 +10,10 @@ You will be graded on the exhaustiveness and quality of your unit tests, the dep
 
 ## Your Explanation Here
 
-First was to extract the hash generation part of the code to a separate function called generateHash `generateHash`, that helps the code to be easily readable and cleaner. Abstraction of repetitive functionality is the best approach to readable code,
+First was to extract the hash generation part of the code to a separate function called `generateHash`, that helps the code to be easily readable and cleaner. Abstraction of repetitive functionality is the best approach to readable code,
 
 Secondly, renamed the `candidate` variable to `FINAL_PARTITION_KEY` which kind of better depects what it holds.
 
-On the first conditional statment, after checking if `event` is set and `event.partitionKey` is set not set, then return an hashed value of the event without having to check funther of other conditions as it's not neccessary anymore. This flow helps reducing processing time and space consumption.
+On the first conditional statement, after checking if `event`. Check if `event.partitionKey` is not set, if true, then generate new has and return it else proceed by input `event.partitionKey` as the `FINAL_PARTITION_KEY`. This flow helps reducing processing time and space consumption without further conditioned checks.
+
+In the `generateHash`, is solely responsible for giving us a sha3 hash. given an input.
