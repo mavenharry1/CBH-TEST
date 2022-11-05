@@ -9,3 +9,9 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+First was to extract the hash generation part of the code to a separate function called generateHash `generateHash`, that helps the code to be easily readable and cleaner. Abstraction of repetitive functionality is the best approach to readable code,
+
+Secondly, renamed the `candidate` variable to `FINAL_PARTITION_KEY` which kind of better depects what it holds.
+
+On the first conditional statment, after checking if `event` is set and `event.partitionKey` is set not set, then return an hashed value of the event without having to check funther of other conditions as it's not neccessary anymore. This flow helps reducing processing time and space consumption.

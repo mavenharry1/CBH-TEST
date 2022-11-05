@@ -1,3 +1,3 @@
 const {deterministicPartitionKey} = require("./dpk");
 
-console.log(deterministicPartitionKey("4"));
+console.log(deterministicPartitionKey({partitionKey: ""}));
